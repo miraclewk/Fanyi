@@ -2,9 +2,9 @@
 import requests
 #import json
 from google import Py4Js 
-#from baidu import findsign 
-#import js2py
-#import re
+# from baidu import findsign 
+# import js2py
+# import re
 ydheaders={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36','x-requested-with':'XMLHttpRequest',
 	'Referer':'http://fanyi.youdao.com/?keyfrom=dict2.index'
 }
@@ -67,12 +67,13 @@ def youdao(content):
 	print('\n有道翻译：',fanyi_result+'\n')
 
 def baidu(content):
-#    sign=findsign(content)
-#    data={'from':'en','to':'zh','query':content,'transtype':'translang','simple_means_flag':'3','sign':sign,'token':'d3e57e8f690ef485d54ee9dd68e0da30'}
-    data={'from':'en','to':'zh','query':content}
-    response=requests.post(url_baidu,data=data,headers=bdheaders)
-    baidu_result=response.json()
-    print('百度翻译：',baidu_result['data'][0]['dst']+'\n')
+#	sign=findsign(content)
+#	data={'from':'en','to':'zh','query':content,'transtype':'translang','simple_means_flag':'3','sign':sign,'token':'d3e57e8f690ef485d54ee9dd68e0da30'}
+	data={'from':'en','to':'zh','query':content}
+	response=requests.post(url_baidu,data=data,headers=bdheaders)
+	baidu_result=response.json()
+	print(baidu_result)
+ #   print('百度翻译：',baidu_result['data'][0]['dst']+'\n')
 def baiducn(content):
 	data={'from':'zh','to':'en','query':content}
 	response=requests.post(url_baidu,data=data,headers=bdheaders)
@@ -142,7 +143,7 @@ if __name__ == '__main__':
 		#			baidu_phone(content)s
 					olu(content)
 					youdao(content)
-					baidu(content)
+			#		baidu(content)
 					google(content)
 		elif choice=='cn':
 			while True:
@@ -157,7 +158,7 @@ if __name__ == '__main__':
 				else:
 		#			baidu_phone(content)
 					youdao(content)
-					baiducn(content)
+			#		baiducn(content)
 					googlecn(content)
 		else:
 			print('输入错误')
